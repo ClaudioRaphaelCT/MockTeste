@@ -1,16 +1,17 @@
-# Configura  es do PostgreSQL
+# Configurações do PostgreSQL
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/cotacao
-    username: ${USER}
-    password: ${PASSWORD}
+    # A URL será fornecida pela variável de ambiente SPRING_DATASOURCE_URL no Render
+    # Em seu ambiente local, você pode ter um application-local.yml com a URL localhost
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: update # Mantenha para desenvolvimento no Render, ou 'validate' para produção
     show-sql: true
     properties:
       hibernate:
         format_sql: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
-
