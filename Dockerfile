@@ -5,7 +5,7 @@ COPY gradlew /app/
 COPY gradle /app/gradle
 COPY src /app/src
 RUN gradle bootJar --no-daemon
-FROM openjdk:21.0.3-jre-slim
+FROM eclipse-temurin:21-jre-jammy
 WORKDIR /app
 COPY --from=build /app/build/libs/*.jar /app/app.jar
 EXPOSE 8080
